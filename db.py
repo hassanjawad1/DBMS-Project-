@@ -1,11 +1,11 @@
 import streamlit as st
-import pandas as pd
+import pandas as pd     
 from sqlalchemy import create_engine, text
 
 # Function to connect to SQL Server and retrieve data based on user role and table
 def get_data(user_role, table_name):
     #%pip install pyodbc
-    conn_str = 'mssql+pyodbc://Mydeb:jamali 13@HASSAN-JAWAD\\SQLEXPRESS01/Jawad?driver=ODBC+Driver+17+for+SQL+Server'
+    conn_str = 'mssql+pyodbc://@HASSAN-JAWAD\\SQLEXPRESS01/Jawad?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server'
     engine = create_engine(conn_str)
 
     # Customize the SQL query based on user role and table name
