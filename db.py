@@ -2,14 +2,14 @@ import streamlit as st
 import pandas as pd     
 from sqlalchemy import create_engine, text
 
-# Function to connect to SQL Server and retrieve data based on user role and table
+# Function to connect to SQL Server 
 def get_data(user_role, table_name):
     #%pip install pyodbc
     conn_str = 'mssql+pyodbc://@HASSAN-JAWAD\\SQLEXPRESS01/Jawad?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server'
     engine = create_engine(conn_str)
 
     # Customize the SQL query based on user role and table name
-    query = text(f'SELECT * FROM Jawad.dbo.{table_name}')  # Pass the query as a text object
+    query = text(f'SELECT * FROM Jawad.dbo.{table_name}')  
 
     # Fetch data using pandas
     data = engine.connect().execute(query).fetchall()
@@ -18,8 +18,11 @@ def get_data(user_role, table_name):
 
 # Streamlit app
 def main():
-    st.title("Assignment Uploader Website by Hassan Jawad (21CS036) & Shaheer Ahmed (21CS034)")
 
+    st.title("Assignment Uploader Website")
+    st.write("- Hassan Jawad (21CS036)")
+    st.write("- Shaheer Ahmed (21CS034)")
+    st.write("- Sajjad Ali (21CS068)")
     st.sidebar.title("User Role and Table Selection")
 
     # Sidebar for user selection
